@@ -17,4 +17,31 @@ public class Logging {
 		}
 	}
 	
+	
+	public static void trace(String msg, Object ... args){
+		log(Level.TRACE, msg, args);
+	}
+	
+	public static void debug(String msg, Object ... args){
+		log(Level.DEBUG, msg, args);
+	}
+	
+	public static void info(String msg, Object ... args){
+		log(Level.INFO, msg, args);
+	}
+	
+	public static void warn(String msg, Object ... args){
+		log(Level.WARN, msg, args);
+	}
+	
+	public static void error(String msg, Object ... args){
+		log(Level.ERROR, msg, args);
+	}
+	
+	public static void fatal(String msg, Object ... args){
+		log(Level.FATAL, msg, args);
+	}
+	
+	
+	
 }
