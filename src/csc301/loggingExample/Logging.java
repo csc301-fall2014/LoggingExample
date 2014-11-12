@@ -2,12 +2,17 @@ package csc301.loggingExample;
 
 public class Logging {
 
-	private static boolean DEBUG = true;
 	
-	// Notice the synta below, this is a var-args method.
-	// It takes 1 String argument, and 0 or more Object arguments.
-	public static void debug(String msg, Object ... args){
-		if(DEBUG){
+	public static enum Level {
+		TRACE, DEBUG, INFO, WARN, ERROR, FATAL
+	}
+	
+	
+	private static Level MIN_LEVEL = Level.DEBUG;
+	
+	
+	public static void log(Level level, String msg, Object ... args){
+		if(level.ordinal() >= MIN_LEVEL.ordinal()){
 			System.out.println("DEBUG: " + String.format(msg, args));
 		}
 	}
