@@ -13,7 +13,7 @@ public class Logging {
 	
 	public static void log(Level level, String msg, Object ... args){
 		if(level.ordinal() >= MIN_LEVEL.ordinal()){
-			System.out.println("DEBUG: " + String.format(msg, args));
+			System.out.println(level.toString() + ": " + String.format(msg, args));
 		}
 	}
 	
