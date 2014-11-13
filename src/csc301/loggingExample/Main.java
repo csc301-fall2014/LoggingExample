@@ -13,12 +13,7 @@ import csc301.loggingExample.logging.formatter.Formatter1;
 import csc301.loggingExample.logging.formatter.Formatter2;
 
 public class Main {
-
-
-	//	private static Logger logger1;
-	//	private static Logger logger2;
-
-
+	
 
 	public static void component1(){
 		Logger logger = getLogger("Logger1");
