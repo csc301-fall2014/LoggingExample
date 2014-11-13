@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import csc301.loggingExample.logging.ConsoleAppender;
 import csc301.loggingExample.logging.FileAppender;
+import csc301.loggingExample.logging.Formatter1;
+import csc301.loggingExample.logging.Formatter2;
 import csc301.loggingExample.logging.Logger;
 import csc301.loggingExample.logging.Logger.Level;
 
@@ -47,9 +49,9 @@ public class Main {
 		logger1 = new Logger(Level.TRACE);
 		logger2 = new Logger(Level.DEBUG); 
 		
-		logger1.addAppender(new ConsoleAppender());
-		logger2.addAppender(new ConsoleAppender());
-		logger2.addAppender(new FileAppender(new File("log.txt")));
+		logger1.addAppender(new ConsoleAppender(new Formatter1()));
+		logger2.addAppender(new ConsoleAppender(new Formatter2()));
+		logger2.addAppender(new FileAppender(new File("log.txt"), new Formatter1()));
 		
 		component1();
 		component2();

@@ -38,9 +38,10 @@ public class Logger {
 		appenders.remove(appender);
 	}
 	
-	private void notifyAppenders(String message){
+	private void notifyAppenders(Level level, String message){
+		LogMessage logMsg = new LogMessage(level, message);
 		for(LogAppender appender : appenders){
-			appender.append(message);
+			appender.append(logMsg);
 		}
 	}
 	
@@ -53,7 +54,7 @@ public class Logger {
 	
 	public void log(Level level, String msg, Object ... args){
 		if(shouldEmitMessage(level)){
-			notifyAppenders(level.toString() + ": " + String.format(msg, args));
+			notifyAppenders(level, String.format(msg, args));
 		}
 	}
 	
