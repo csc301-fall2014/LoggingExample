@@ -3,7 +3,7 @@
 In this example, we will develop a logging library.      
 
 Please note that this is only an example, used to introduce you to some software engineering challenges and techniques.
-In a real product, you would use an existing logging librar(ies) (e.g. [log4j](http://logging.apache.org/log4j/2.x/), [logback](http://logback.qos.ch/), and [slf4j](http://www.slf4j.org/)).
+In a real product, you would use an existing logging library , such as [log4j](http://logging.apache.org/log4j/2.x/), [logback](http://logback.qos.ch/), and/or [slf4j](http://www.slf4j.org/).
 
 We start with a simple [`Main`](src/csc301/loggingExample/Main.java) class that uses a print statement to print debug messages to the console.
 
