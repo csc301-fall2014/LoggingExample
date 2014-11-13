@@ -1,4 +1,7 @@
-package csc301.loggingExample;
+package csc301.loggingExample.logging;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class Logger {
@@ -12,6 +15,7 @@ public class Logger {
 	
 	
 	private Level minLevel;
+	private Set<LogAppender> appenders = new HashSet<LogAppender>();
 	
 	
 	public Logger(Level minLevel) {
@@ -23,13 +27,33 @@ public class Logger {
 	}
 	
 	
+	//-------------------------------------------------------------------------
+	// Observer pattern ...
+	
+	public void addAppender(LogAppender appender){
+		appenders.add(appender);
+	}
+	
+	public void removeAppender(LogAppender appender){
+		appenders.remove(appender);
+	}
+	
+	private void notifyAppenders(String message){
+		for(LogAppender appender : appenders){
+			appender.append(message);
+		}
+	}
+	
+	//-------------------------------------------------------------------------
+	
+	
 	protected boolean shouldEmitMessage(Level level){
 		return level.ordinal() >= this.minLevel.ordinal();
 	}
 	
 	public void log(Level level, String msg, Object ... args){
 		if(shouldEmitMessage(level)){
-			System.out.println(level.toString() + ": " + String.format(msg, args));
+			notifyAppenders(level.toString() + ": " + String.format(msg, args));
 		}
 	}
 	

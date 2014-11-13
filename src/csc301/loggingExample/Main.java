@@ -3,7 +3,10 @@ package csc301.loggingExample;
 import java.io.File;
 import java.io.IOException;
 
-import csc301.loggingExample.Logger.Level;
+import csc301.loggingExample.logging.ConsoleAppender;
+import csc301.loggingExample.logging.FileAppender;
+import csc301.loggingExample.logging.Logger;
+import csc301.loggingExample.logging.Logger.Level;
 
 public class Main {
 
@@ -42,7 +45,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		
 		logger1 = new Logger(Level.TRACE);
-		logger2 = new FileLogger(Level.DEBUG, new File("log.txt"));
+		logger2 = new Logger(Level.DEBUG); 
+		
+		logger1.addAppender(new ConsoleAppender());
+		logger2.addAppender(new ConsoleAppender());
+		logger2.addAppender(new FileAppender(new File("log.txt")));
 		
 		component1();
 		component2();
