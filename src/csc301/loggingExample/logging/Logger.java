@@ -39,13 +39,23 @@ public class Logger {
 	}
 	
 	private void notifyAppenders(Level level, String message){
-		LogMessage logMsg = new LogMessage.Builder()
+		// We will call the appenders' append method in a separate thread.
+		// Q1: Why are we creating the LogMessage object in the current thread?
+		// Q2: Why did we have to declare logMsg as final? 
+		
+		final LogMessage logMsg = new LogMessage.Builder()
 							.level(level)
 							.message(message)
 							.build();
-		for(LogAppender appender : appenders){
-			appender.append(logMsg);
-		}
+		
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for(LogAppender appender : appenders){
+					appender.append(logMsg);
+				}
+			}
+		}).start();
 	}
 	
 	//-------------------------------------------------------------------------
