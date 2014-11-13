@@ -23,10 +23,12 @@ public class Logger {
 	}
 	
 	
-	
+	protected boolean shouldEmitMessage(Level level){
+		return level.ordinal() >= this.minLevel.ordinal();
+	}
 	
 	public void log(Level level, String msg, Object ... args){
-		if(level.ordinal() >= this.minLevel.ordinal()){
+		if(shouldEmitMessage(level)){
 			System.out.println(level.toString() + ": " + String.format(msg, args));
 		}
 	}
