@@ -13,19 +13,33 @@ public class Logger {
 	
 	//=========================================================================
 	
-	
+	private String name;
 	private Level minLevel;
 	private Set<LogAppender> appenders = new HashSet<LogAppender>();
 	
+	public Logger(String name, Level minLevel) {
+		this.name = name;
+		this.minLevel = minLevel;
+	}
 	
 	public Logger(Level minLevel) {
-		this.minLevel = minLevel;
+		this(null, minLevel);
 	}
 	
 	public Logger() {
 		this(Level.DEBUG);
 	}
 	
+	
+	//-------------------------------------------------------------------------
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	//-------------------------------------------------------------------------
 	// Observer pattern ...

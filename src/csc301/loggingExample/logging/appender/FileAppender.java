@@ -12,8 +12,17 @@ public class FileAppender extends AbstractAppender {
 	private FileWriter logFile;
 
 	public FileAppender(File filename, LogFormatter formatter) throws IOException {
+		super(formatter);
+		init(filename);
+	}
+	
+	public FileAppender(File filename) throws IOException {
+		super();
+		init(filename);
+	}
+	
+	private void init(File filename) throws IOException{
 		logFile = new FileWriter(filename);
-		setFormatter(formatter);
 	}
 	
 
