@@ -1,4 +1,7 @@
-package csc301.loggingExample.logging;
+package csc301.loggingExample.logging.formatter;
+
+import csc301.loggingExample.logging.LogFormatter;
+import csc301.loggingExample.logging.LogMessage;
 
 public class Formatter1 implements LogFormatter {
 

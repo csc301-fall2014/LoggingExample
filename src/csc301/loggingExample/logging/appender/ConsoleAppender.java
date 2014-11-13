@@ -1,4 +1,8 @@
-package csc301.loggingExample.logging;
+package csc301.loggingExample.logging.appender;
+
+import csc301.loggingExample.logging.LogAppender;
+import csc301.loggingExample.logging.LogFormatter;
+import csc301.loggingExample.logging.LogMessage;
 
 public class ConsoleAppender implements LogAppender {
 

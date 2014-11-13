@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import csc301.loggingExample.logging.ConsoleAppender;
-import csc301.loggingExample.logging.FileAppender;
-import csc301.loggingExample.logging.Formatter1;
-import csc301.loggingExample.logging.Formatter2;
 import csc301.loggingExample.logging.Logger;
 import csc301.loggingExample.logging.Logger.Level;
+import csc301.loggingExample.logging.appender.ConsoleAppender;
+import csc301.loggingExample.logging.appender.FileAppender;
+import csc301.loggingExample.logging.formatter.Formatter1;
+import csc301.loggingExample.logging.formatter.Formatter2;
 
 public class Main {
 

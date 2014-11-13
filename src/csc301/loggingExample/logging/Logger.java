@@ -39,7 +39,10 @@ public class Logger {
 	}
 	
 	private void notifyAppenders(Level level, String message){
-		LogMessage logMsg = new LogMessage(level, message);
+		LogMessage logMsg = new LogMessage.Builder()
+							.level(level)
+							.message(message)
+							.build();
 		for(LogAppender appender : appenders){
 			appender.append(logMsg);
 		}

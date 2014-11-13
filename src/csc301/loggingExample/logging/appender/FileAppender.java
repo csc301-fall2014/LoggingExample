@@ -1,8 +1,12 @@
-package csc301.loggingExample.logging;
+package csc301.loggingExample.logging.appender;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import csc301.loggingExample.logging.LogAppender;
+import csc301.loggingExample.logging.LogFormatter;
+import csc301.loggingExample.logging.LogMessage;
 
 public class FileAppender implements LogAppender {
 
