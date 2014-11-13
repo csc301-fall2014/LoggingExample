@@ -9,6 +9,7 @@ import csc301.loggingExample.logging.Logger;
 import csc301.loggingExample.logging.Logger.Level;
 import csc301.loggingExample.logging.appender.ConsoleAppender;
 import csc301.loggingExample.logging.appender.FileAppender;
+import csc301.loggingExample.logging.appender.NetworkAppender;
 import csc301.loggingExample.logging.formatter.Formatter1;
 import csc301.loggingExample.logging.formatter.Formatter2;
 
@@ -65,7 +66,8 @@ public class Main {
 		try {
 			logger = new Logger(Level.DEBUG);
 			logger.addAppender(new ConsoleAppender(new Formatter2()));
-			logger.addAppender(new FileAppender(new File("log.txt"), new Formatter1()));
+			logger.addAppender(new FileAppender(new File("log.txt"), new Formatter2()));
+			logger.addAppender(new NetworkAppender());
 			namedLoggers.put("Logger2", logger);
 
 		} catch (IOException e) {

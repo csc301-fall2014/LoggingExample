@@ -8,7 +8,7 @@ import csc301.loggingExample.logging.LogMessage;
 
 public class Formatter2 implements LogFormatter {
 
-	DateFormat dateFormat = new SimpleDateFormat();
+	DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss.SSS");
 	
 	@Override
 	public String format(LogMessage logMsg) {
