@@ -13,3 +13,7 @@ Our system architecture is much more flexible, and looks like this:
 
 ![Architecture Diagram](LoggerArchitecture.png)
  
+
+__New Requirements:__ We would like to do all of the logging setup in one place, and be able to get loggers by name from anywhere in the application.
+
+Let's see [step 10](https://github.com/csc301-fall2014/LoggingExample/tree/step10)
