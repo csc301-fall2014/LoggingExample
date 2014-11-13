@@ -1,13 +1,75 @@
 package csc301.loggingExample.logging;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
+
+import csc301.loggingExample.logging.appender.ConsoleAppender;
 
 
 public class Logger {
 
 	public static enum Level {
 		TRACE, DEBUG, INFO, WARN, ERROR, FATAL
+	}
+	
+	//=========================================================================
+	
+	private static Map<String, Logger> namedLoggers;
+	private static Logger defaultLogger;
+	
+	// Load loggers from a configuration when the program starts ...
+	static {
+		
+		namedLoggers = new HashMap<String, Logger>();
+		File defaultConfigFile = new File("logging.conf"); 
+		
+		// Override the default configuration file using an environment variable
+		if(System.getenv("LOGGING_CONFIG") != null){
+			initLoggers(new File(System.getenv("LOGGING_CONFIG")));
+		} else if (defaultConfigFile.isFile()){
+			initLoggers(defaultConfigFile);
+		} else {
+			initLoggers(null);
+		}
+	}
+	
+	
+	
+
+	private static void initLoggers(File configFile){
+		defaultLogger = new Logger();
+		defaultLogger.addAppender(new ConsoleAppender());
+		
+		if(configFile != null){
+			
+			try {
+				
+				Iterator<Logger> itr = LoggingUtil.loadLoggersFromConfigFile(configFile);
+				while(itr.hasNext()){
+					Logger logger = itr.next();
+					namedLoggers.put(logger.getName(), logger);
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.err.println("The default console-logger will be used as a fallback.");
+			}
+		}
+	}
+
+	
+	
+	public static Logger getLogger(String name){
+		if(namedLoggers.containsKey(name)){
+			return namedLoggers.get(name);
+		} else {
+			return defaultLogger;
+		}
 	}
 	
 	
